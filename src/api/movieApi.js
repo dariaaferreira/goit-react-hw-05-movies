@@ -48,3 +48,15 @@ export const getMovieReviews = async (movieId) => {
     console.log('Error fetching reviews:', error);
   }
 };
+
+export const getSearchMovies = async (movie) => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${movie}`
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log('Error fetching search movies:', error);
+  }
+};
