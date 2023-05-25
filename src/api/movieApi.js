@@ -36,3 +36,15 @@ export const getMovieCast = async (movieId) => {
     console.log('Error fetching cast details:', error);
   }
 };
+
+export const getMovieReviews = async (movieId) => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/movie/${movieId}/reviews?api_key=${API_KEY}`
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log('Error fetching reviews:', error);
+  }
+};

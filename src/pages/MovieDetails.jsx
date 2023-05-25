@@ -31,6 +31,9 @@ const MovieDetails = () => {
       <p>
         <Link to={`/movies/${movieId}/cast`}>Cast</Link>
       </p>
+      <p>
+        <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
+      </p>
       <Outlet />
     </div>
   );
