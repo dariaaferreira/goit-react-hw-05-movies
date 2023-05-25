@@ -24,3 +24,15 @@ export const getByMovieId = async (movieId) => {
     console.log('Error fetching movie details:', error);
   }
 };
+
+export const getMovieCast = async (movieId) => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log('Error fetching cast details:', error);
+  }
+};

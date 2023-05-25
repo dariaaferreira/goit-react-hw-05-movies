@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link, Outlet } from "react-router-dom";
 import { getByMovieId } from "../api/movieApi";
 
 const MovieDetails = () => {
@@ -28,6 +28,10 @@ const MovieDetails = () => {
       <p>Rating: {vote_average}</p>
       <h3>Overview</h3>
       <p>{overview}</p>
+      <p>
+        <Link to={`/movies/${movieId}/cast`}>Cast</Link>
+      </p>
+      <Outlet />
     </div>
   );
 };
