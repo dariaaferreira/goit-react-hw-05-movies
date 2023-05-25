@@ -6,7 +6,7 @@ const Movies = () => {
     }, [])
 
     return (
-        <div>Movies page !!!</div>
+        <div>Movies search page !!!</div>
     )
 }
 

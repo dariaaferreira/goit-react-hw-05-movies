@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 import { fetchTrendingMovies } from '../api/movieApi';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      const trendingMovies = await fetchTrendingMovies();
-      setMovies(trendingMovies);
-    };
-
-    fetchMovies();
+    fetchTrendingMovies().then(setMovies);
   }, []);
 
   return (
     <div>
-      <h1>Trending Movies Today</h1>
+      <h1>Trending today</h1>
       <ul>
-        {movies.map(movie => (
-          <li key={movie.id}>{movie.title}</li>
+        {movies.map(({ id, title}) => (
+          <li key={id}>
+            <Link to={`/movies/${id}`}>
+              <p>{title}</p>
+            </Link>
+          </li>
         ))}
       </ul>
     </div>
