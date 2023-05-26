@@ -1,9 +1,10 @@
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { getSearchMovies } from "../api/movieApi";
-import SearchForm from "../components/SearchForm/SearchForm";
-import MoviesList from "../components/MoviesList/MoviesList";
+import { getSearchMovies } from "../../api/movieApi";
+import SearchForm from "../../components/SearchForm/SearchForm";
+import MoviesList from "../../components/MoviesList/MoviesList";
 import Loader from "components/Loader/Loader";
+import { SearchbarContainer, SearchContainer } from "./Movies.styled";
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -53,25 +54,27 @@ const Movies = () => {
   };
 
   return (
-    <div>
-      <SearchForm
+    <>
+      <SearchContainer>
+        <SearchForm
         searchInput={searchInput}
         handleSearchChange={handleSearchChange}
         handleSearchSubmit={handleSearchSubmit}
-      />
-
+        />
+      </SearchContainer>
+      <SearchbarContainer>
       {query && (
         <div>
-          <Suspense fallback={<Loader />}>
             {isLoading ? (
               <Loader />
             ) : (
               <MoviesList movies={movies} isResults={isResults} />
             )}
-          </Suspense>
         </div>
       )}
-    </div>
+    </SearchbarContainer>
+    </>
+
   );
 };
 

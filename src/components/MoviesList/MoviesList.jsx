@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { MoviesItem } from "../MoviesItem/MoviesItem";
 import Loader from "components/Loader/Loader";
+import { MovieCards } from "./MoviesList.styled";
 
 const MoviesList = ({ movies, isResults }) => {
 
@@ -10,11 +11,11 @@ const MoviesList = ({ movies, isResults }) => {
         {isResults ? (
           <p>Немає результатів пошуку.</p>
         ) : (
-          <ul>
+          <MovieCards>
             {movies.map((movie) => {
               return <MoviesItem key={movie.id} movie={movie} />;
             })}
-          </ul>
+          </MovieCards>
         )}
       </Suspense>
     </div>

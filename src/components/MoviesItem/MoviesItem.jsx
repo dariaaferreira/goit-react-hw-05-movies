@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import { MovieTitle, MovieImg, MovieItem } from './MoviesItem.styled'
 
 export const MoviesItem = ({
   movie: { id, poster_path, original_title, original_name },
@@ -6,9 +7,11 @@ export const MoviesItem = ({
   const location = useLocation();
 
   return (
-    <div>
-      <Link state={{ from: location }} to={`/movies/${id}`}>
-        <img
+    <MovieItem>
+      <Link 
+        state={{ from: location }} to={`/movies/${id}`} 
+        style={{ textDecoration: 'none' }}>
+        <MovieImg
           src={
             poster_path
               ? "https://image.tmdb.org/t/p/w500" + poster_path
@@ -16,8 +19,8 @@ export const MoviesItem = ({
           }
           alt={original_title || original_name}
         />
-        <h3>{original_title || original_name}</h3>
+        <MovieTitle>{original_title || original_name}</MovieTitle>
       </Link>
-    </div>
+    </MovieItem>
   );
 };

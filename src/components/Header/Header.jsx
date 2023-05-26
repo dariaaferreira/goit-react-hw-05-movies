@@ -1,24 +1,24 @@
-// import React from "react";
-// import { NavLink, Outlet } from "react-router-dom";
+import React from "react";
+import { BiCameraMovie, BiHomeAlt } from 'react-icons/bi';
+import { NavContainer, NavLinkStyled, NavList } from './Header.styled';
 
-// const Header = () => {
-//   return (
-//     <div>
-//       <ul>
-//         <li>
-//           <NavLink to="/" >
-//             Home
-//           </NavLink>
-//         </li>
-//         <li>
-//           <NavLink to="/movies">
-//             Movies
-//           </NavLink>
-//         </li>
-//       </ul>
-//       <Outlet />
-//     </div>
-//   );
-// };
+const Header = () => {
+  return (
+    <NavContainer>
+      <NavList>
+        <NavLinkStyled to="/">
+          <BiHomeAlt size={20} />
+          Home
+        </NavLinkStyled>
+      </NavList>
+      <NavList>
+        <NavLinkStyled to="/movies">
+          <BiCameraMovie size={20} />
+          Movies
+        </NavLinkStyled>
+      </NavList>
+    </NavContainer>
+  );
+};
 
-// export default Header;
+export default Header;
