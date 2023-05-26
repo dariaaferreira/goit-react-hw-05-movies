@@ -5,9 +5,11 @@ const SearchForm = ({ searchInput, handleSearchChange, handleSearchSubmit }) => 
     <form onSubmit={handleSearchSubmit}>
       <input 
           type="text" 
+          name="search"
           value={searchInput} 
+          placeholder="Enter movie name..."
           onChange={handleSearchChange} />
-      <button type="submit">Пошук</button>
+      <button type="submit">Search</button>
     </form>
   );
 };

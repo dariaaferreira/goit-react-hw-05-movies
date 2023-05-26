@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import { useParams, Link, Outlet } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams, Outlet } from "react-router-dom";
 import { getByMovieId } from "../api/movieApi";
+import MovieInfo from "../components/MovieInfo/MovieInfo";
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -14,26 +15,18 @@ const MovieDetails = () => {
     return <div>Loading...</div>;
   }
 
-  const { title, overview, release_date, vote_average, poster_path } = movie;
-
   return (
     <div>
-      <img
-        src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-        alt={title}
-        width="200"
-      />
-      <h2>{title}</h2>
-      <p>Released: {release_date}</p>
-      <p>Rating: {vote_average}</p>
-      <h3>Overview</h3>
-      <p>{overview}</p>
-      <p>
-        <Link to={`/movies/${movieId}/cast`}>Cast</Link>
-      </p>
-      <p>
-        <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
-      </p>
+      <MovieInfo movie={movie} />
+      <p>Additional information</p>
+      <ul>
+        <li>
+          <Link to={`/movies/${movieId}/cast`}>Cast</Link>
+        </li>
+        <li>
+          <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
+        </li>
+      </ul>
       <Outlet />
     </div>
   );

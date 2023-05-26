@@ -18,16 +18,27 @@ const Cast = () => {
 
   return (
     <div>
-      {cast.map(({ id, name, profile_path}) => (
-        <div key={id}>
-          <img
-            src={`https://image.tmdb.org/t/p/w300${profile_path}`}
-            alt={name}
-            width="100"
-          />
-          <p>{name}</p>
-        </div>
-      ))}
+      {cast.length > 0 ? (
+        cast.map(({ id, name, character, profile_path }) => (
+          <div key={id}>
+            <img
+              src={
+                profile_path
+                  ? `https://image.tmdb.org/t/p/w300${profile_path}`
+                  : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg'
+              }
+              alt={name}
+              width="100"
+            />
+            <p>{name}</p>
+            <p>
+              <b>Character:</b> {character}
+            </p>
+          </div>
+        ))
+      ) : (
+        <p>This movie has no actors.</p>
+      )}
     </div>
   );
 };
