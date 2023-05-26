@@ -1,11 +1,11 @@
 import { HiArrowLeft } from "react-icons/hi";
-import { Link } from "react-router-dom";
+import { StyledLink } from "./BackLink.styled";
 
 export const BackLink = ({ goBackLink  }) => {
   return (
-    <Link to={goBackLink}>
+    <StyledLink to={goBackLink}>
       <HiArrowLeft size="24" />
       Go back
-    </Link>
+    </StyledLink>
   );
 };
