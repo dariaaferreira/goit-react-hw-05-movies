@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getSearchMovies } from "../api/movieApi";
 import SearchForm from "../components/SearchForm/SearchForm";
 import MoviesList from "../components/MoviesList/MoviesList";
+import Loader from "components/Loader/Loader";
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -22,7 +23,6 @@ const Movies = () => {
       try {
         setIsLoading(true);
         const data = await getSearchMovies(query);
-        // console.log(data.results);
         const results = data.results;
 
         if (results.length < 1) {
@@ -46,7 +46,7 @@ const Movies = () => {
     setSearchInput(event.target.value);
   };
 
-  const handleSearchSubmit = (event) => {
+  const handleSearchSubmit = async (event) => {
     event.preventDefault();
     setSearchParams({ query: searchInput.toLowerCase() });
     setSearchInput("");
@@ -62,11 +62,13 @@ const Movies = () => {
 
       {query && (
         <div>
-          {isLoading ? (
-            <p>Loading...</p>
-          ) : (
-            <MoviesList movies={movies} isResults={isResults} />
-          )}
+          <Suspense fallback={<Loader />}>
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <MoviesList movies={movies} isResults={isResults} />
+            )}
+          </Suspense>
         </div>
       )}
     </div>

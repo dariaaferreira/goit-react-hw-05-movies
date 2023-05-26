@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieCast } from "../../api/movieApi";
+import Loader from "components/Loader/Loader";
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -20,7 +21,7 @@ const Cast = () => {
   }, [movieId]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (!cast || cast.length === 0) {
