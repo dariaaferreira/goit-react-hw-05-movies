@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { MoviesItem } from "../MoviesItem/MoviesItem"
 
 const MoviesList = ({ movies, isResults }) => {
   return (
@@ -8,13 +8,9 @@ const MoviesList = ({ movies, isResults }) => {
         <p>Немає результатів пошуку.</p>
       ) : (
         <ul>
-          {movies.map(({ id, title }) => (
-            <li key={id}>
-              <Link to={`/movies/${id}`}>
-                <p>{title}</p>
-              </Link>
-            </li>
-          ))}
+        {movies.map(movie => {
+          return <MoviesItem key={movie.id} movie={movie} />;
+        })}
         </ul>
       )}
     </div>

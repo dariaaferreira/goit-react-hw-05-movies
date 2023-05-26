@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams, Outlet } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { getByMovieId } from "../api/movieApi";
 import MovieInfo from "../components/MovieInfo/MovieInfo";
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+
+  const location = useLocation();
+  const goBackLink = location?.state?.from ?? '/';
 
   useEffect(() => {
     getByMovieId(movieId).then(setMovie);
@@ -17,17 +20,7 @@ const MovieDetails = () => {
 
   return (
     <div>
-      <MovieInfo movie={movie} />
-      <p>Additional information</p>
-      <ul>
-        <li>
-          <Link to={`/movies/${movieId}/cast`}>Cast</Link>
-        </li>
-        <li>
-          <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
-        </li>
-      </ul>
-      <Outlet />
+      <MovieInfo movieInfo={movie} goBackLink={goBackLink} />
     </div>
   );
 };

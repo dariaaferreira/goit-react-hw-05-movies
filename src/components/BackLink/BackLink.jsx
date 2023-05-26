@@ -1,10 +1,10 @@
-import { MdArrowBackIos } from 'react-icons/md';
+import { HiArrowLeft } from "react-icons/hi";
 import { Link } from "react-router-dom";
 
 export const BackLink = ({ goBackLink  }) => {
   return (
     <Link to={goBackLink}>
-      <MdArrowBackIos size="24" />
+      <HiArrowLeft size="24" />
       Go back
     </Link>
   );
