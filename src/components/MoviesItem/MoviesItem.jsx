@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 import { MovieTitle, MovieImg, MovieItem } from './MoviesItem.styled'
 
@@ -23,4 +24,8 @@ export const MoviesItem = ({
       </Link>
     </MovieItem>
   );
+};
+
+MoviesItem.propTypes = {
+  movie: PropTypes.object.isRequired,
 };

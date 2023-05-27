@@ -1,4 +1,5 @@
 import React, { Suspense } from "react";
+import PropTypes from 'prop-types';
 import { MoviesItem } from "../MoviesItem/MoviesItem";
 import Loader from "components/Loader/Loader";
 import { MovieCards } from "./MoviesList.styled";
@@ -23,3 +24,7 @@ const MoviesList = ({ movies, isResults }) => {
 };
 
 export default MoviesList;
+
+MoviesList.propTypes = {
+  movies: PropTypes.array.isRequired,
+};

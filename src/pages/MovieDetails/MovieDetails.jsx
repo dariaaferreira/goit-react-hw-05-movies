@@ -3,6 +3,7 @@ import { useParams, useLocation } from "react-router-dom";
 import { getByMovieId } from "../../api/movieApi";
 import MovieInfo from "../../components/MovieInfo/MovieInfo";
 import Loader from "components/Loader/Loader";
+import { Container } from "./MovieDetails.styled";
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -20,9 +21,9 @@ const MovieDetails = () => {
   }
 
   return (
-    <div>
+    <Container>
       <MovieInfo movieInfo={movie} goBackLink={goBackLink} />
-    </div>
+    </Container>
   );
 };
 

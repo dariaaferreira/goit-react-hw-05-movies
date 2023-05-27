@@ -1,4 +1,5 @@
 import React, { Suspense } from "react";
+import PropTypes from 'prop-types';
 import { BackLink } from "../BackLink/BackLink";
 import { Outlet, useLocation } from "react-router-dom";
 import Loader from "components/Loader/Loader";
@@ -77,3 +78,8 @@ const MovieInfo = ({
 };
 
 export default MovieInfo;
+
+MovieInfo.propTypes = {
+  movieInfo: PropTypes.object.isRequired,
+  goBackLink: PropTypes.object.isRequired,
+};

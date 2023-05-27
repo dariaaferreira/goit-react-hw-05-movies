@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MoviesList from 'components/MoviesList/MoviesList';
 import { fetchTrendingMovies } from '../../api/movieApi';
-import { Container, Title } from './Home.styled';
+import { Container } from './Home.styled';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -12,7 +12,9 @@ const Home = () => {
 
   return (
     <Container>
-      <Title>Trending today</Title>
+      <div>
+        <h1>Trending today</h1>
+      </div>
       <MoviesList movies={movies} />
     </Container>
   );
