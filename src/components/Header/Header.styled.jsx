@@ -29,7 +29,7 @@ export const NavLinkStyled = styled(NavLink)`
   align-items: center;
   text-decoration: none;
   gap: 5px;
-  
+  font-size: 24px;
   font-weight: 500;
   color: black; 
 

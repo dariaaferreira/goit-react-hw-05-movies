@@ -7,13 +7,13 @@ const Header = () => {
     <NavContainer>
       <NavList>
         <NavLinkStyled to="/">
-          <BiHomeAlt size={20} />
+          <BiHomeAlt size={24} />
           Home
         </NavLinkStyled>
       </NavList>
       <NavList>
         <NavLinkStyled to="/movies">
-          <BiCameraMovie size={20} />
+          <BiCameraMovie size={24} />
           Movies
         </NavLinkStyled>
       </NavList>
