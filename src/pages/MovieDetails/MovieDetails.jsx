@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { getByMovieId } from "../../api/movieApi";
 import MovieInfo from "../../components/MovieInfo/MovieInfo";
-import Loader from "components/Loader/Loader";
 import { Container } from "./MovieDetails.styled";
 
 const MovieDetails = () => {
@@ -17,7 +16,7 @@ const MovieDetails = () => {
   }, [movieId]);
 
   if (!movie) {
-    return <Loader />;
+    return null;
   }
 
   return (
