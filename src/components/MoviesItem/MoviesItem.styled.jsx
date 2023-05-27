@@ -19,5 +19,6 @@ export const MovieImg = styled.img`
 
 export const MovieTitle = styled.h3`
   padding: 10px;
+  font-size: 20px;
   color: black;
 `;
