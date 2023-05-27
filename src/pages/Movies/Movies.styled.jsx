@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 
 export const SearchbarContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  justify-content: center;
   gap: 20px;
   padding: 20px;
 `;

@@ -1,7 +1,14 @@
 import React, { Suspense } from "react";
 import { BackLink } from "../BackLink/BackLink";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Loader from "components/Loader/Loader";
+import {
+  MovieWrapper,
+  LinkList,
+  LinkItem,
+  LinkStyled,
+  Overview
+} from './MovieInfo.styled';
 
 const MovieInfo = ({
   movieInfo: {
@@ -19,7 +26,7 @@ const MovieInfo = ({
   return (
     <>
       <BackLink goBackLink={goBackLink} />
-      <div>
+      <MovieWrapper>
         <img
           src={
             poster_path
@@ -32,35 +39,35 @@ const MovieInfo = ({
         <h2>
           {original_title} ({new Date(release_date).getFullYear()})
         </h2>
-        <p>User score: {(vote_average * 10).toFixed(0)}%</p>
-        <h3>Overview</h3>
-        <p>{overview}</p>
+        <p><b>User score:</b> {(vote_average * 10).toFixed(0)}%</p>
+        {overview && <h3>Overview</h3>}
+        {overview && <Overview>{overview}</Overview>}
         {genres.length > 0 && (
           <>
             <h3>Genres</h3>
             <p>{genres.map((genre) => genre.name).join(", ")}</p>
           </>
         )}
-      </div>
+      </MovieWrapper>
 
-      <ul>
-        <li>
-          <Link
+      <LinkList>
+        <LinkItem>
+          <LinkStyled
             state={{ from: location.state?.from ?? "/movies" }}
             to="cast"
           >
             Cast
-          </Link>
-        </li>
-        <li>
-          <Link
+          </LinkStyled>
+        </LinkItem>
+        <LinkItem>
+          <LinkStyled
             state={{ from: location.state?.from ?? "/movies" }}
             to="reviews"
           >
             Review
-          </Link>
-        </li>
-      </ul>
+          </LinkStyled>
+        </LinkItem>
+      </LinkList>
 
       <Suspense fallback={<Loader />}>
         <Outlet />

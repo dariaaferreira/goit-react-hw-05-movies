@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieCast } from "../../api/movieApi";
 import Loader from "components/Loader/Loader";
+import { CastList, CastItem,  CastImg, CastDescr, CastText } from "./Cast.styled"
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -25,14 +26,14 @@ const Cast = () => {
   }
 
   if (!cast || cast.length === 0) {
-    return <div>This movie has no actors.</div>;
+    return <div style={{ marginLeft: '40px' }}>This movie has no actors.</div>;
   }
 
   return (
-    <div>
+    <CastList>
       {cast.map(({ id, name, character, profile_path }) => (
-        <div key={id}>
-          <img
+        <CastItem key={id}>
+          <CastImg
             src={
               profile_path
                 ? `https://image.tmdb.org/t/p/w300${profile_path}`
@@ -41,13 +42,15 @@ const Cast = () => {
             alt={name}
             width="100"
           />
-          <p>{name}</p>
-          <p>
+          <CastDescr>
+          <CastText>{name}</CastText>
+          <CastText>
             <b>Character:</b> {character}
-          </p>
-        </div>
+          </CastText>
+          </CastDescr>
+        </CastItem>
       ))}
-    </div>
+    </CastList>
   );
 };
 

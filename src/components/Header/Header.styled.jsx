@@ -10,11 +10,11 @@ export const NavContainer = styled.header`
   align-items: center;
   min-height: 64px;
   padding-right: 24px;
-  padding-left: 24px;
+  padding-left: 170px;
   padding-top: 12px;
   padding-bottom: 12px;
   color: #fff;
-  background-color: #3f51b5;
+  background-color: rgb(0 102 183);
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 `;
@@ -31,7 +31,7 @@ export const NavLinkStyled = styled(NavLink)`
   gap: 5px;
   
   font-weight: 500;
-  color: white; 
+  color: black; 
 
   :hover,
   :focus {
@@ -40,7 +40,7 @@ export const NavLinkStyled = styled(NavLink)`
 
   &.active {
     font-weight: bold;
-    color: black;
+    color: white;
   }
 
 `;

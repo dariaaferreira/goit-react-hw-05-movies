@@ -5,13 +5,14 @@ export const StyledLink = styled(Link)`
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 8px 0;
+  margin-left: 40px;
+  margin-top: 20px;
   color: black;
   text-decoration: none;
   font-weight: 500;
   text-transform: uppercase;
 
   :hover {
-    color: orangered;
+    color: rgb(0, 102, 183);
   }
 `;

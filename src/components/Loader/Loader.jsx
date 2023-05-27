@@ -3,7 +3,7 @@ import { ThreeDots } from "react-loader-spinner";
 
 const Loader = () => {
   return (
-    <div className="loader-wrapper">
+    <div style={{ marginLeft: '40px' }}>
       <ThreeDots
         height={80}
         width={80}
@@ -12,6 +12,7 @@ const Loader = () => {
         ariaLabel="three-dots-loading"
       />
     </div>
+
   );
 };
 

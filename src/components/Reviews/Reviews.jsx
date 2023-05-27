@@ -3,6 +3,13 @@ import { useParams } from "react-router-dom";
 import { getMovieReviews } from "../../api/movieApi";
 import Loader from "components/Loader/Loader";
 
+import {
+  ReviewDescr,
+  ReviewItem,
+  ReviewList,
+  ReviewAuthor,
+} from "./Reviews.styled";
+
 const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
@@ -25,18 +32,18 @@ const Reviews = () => {
   }
 
   if (!reviews || reviews.length === 0) {
-    return <div>We don't have any reviews for this movie.</div>;
+    return <div style={{ marginLeft: '40px' }}>We don't have any reviews for this movie.</div>;
   }
 
   return (
-    <div>
+    <ReviewList>
       {reviews.map(({ id, author, content }) => (
-        <div key={id}>
-          <p>Author: {author}</p>
-          <p>{content}</p>
-        </div>
+        <ReviewItem key={id}>
+          <ReviewAuthor><b>Author:</b> {author}</ReviewAuthor>
+          <ReviewDescr>{content}</ReviewDescr>
+        </ReviewItem>
       ))}
-    </div>
+    </ReviewList>
   );
 };
 
